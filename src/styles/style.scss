@@ -148,7 +148,7 @@ body{
                         }
 
                         &:last-child{
-                            
+
 
                             &:after{
                                 content: '';
@@ -161,6 +161,14 @@ body{
                             font-weight: 300;
                             font-size: 15px;
                             text-decoration: none;
+                        }
+                    }
+
+                    li:last-child{
+
+                        a{
+                            color: #000;
+                            font-weight: 500;
                         }
                     }
                 }
@@ -327,6 +335,87 @@ body{
     }
 
     .page-content{
+        padding: 0px;
 
+        .page-content-inner{
+
+            .left-column{
+                padding: 30px;
+
+                .left-column-inner{
+
+                    .left-column-inner-title{
+                        border-bottom: 1px solid #eee;
+
+                        h3{
+
+                        }
+                    }
+
+                    .left-column-inner-content{
+
+                        ul{
+                            padding: 0px;
+                            margin: 0px;
+
+                            li{
+                                padding-top: 10px;
+                                list-style: none;
+
+                                a{
+                                    color: #aaa;
+                                    font-weight: 500;
+                                    font-size: 15px;
+                                    text-decoration: none;
+
+                                    &:hover{
+                                        border-bottom: 1px solid #000;
+                                        color: #000;
+                                    }
+                                }
+                            }
+
+                            li.active{
+
+                                a{
+                                    color: #000;
+                                }
+                            }
+                        }
+                    }
+                }
+            }   
+
+            .right-column{
+
+                .right-column-inner{
+                    border-left: 1px solid #eee;
+
+                    .right-column-inner-content{
+                        padding: 30px;
+
+                        pre{
+                            background: #eee;
+                            padding: 20px;
+                            border-radius: 5px;
+                            overflow: auto;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+* Page: Subject
+*/
+.subjects-page{
+
+    .page-header{
+        min-height: 400px;
+        height: auto;
+
+        padding-bottom: 100px;
     }
 }

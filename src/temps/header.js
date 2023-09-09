@@ -24,9 +24,9 @@ const header = () => {
                         <nav>
                             <ul>
                                 <li><a href="/">Home</a></li>
-                                <li><a href="/about">HTML</a></li>
-                                <li><a href="/about">CSS</a></li>
-                                <li><a href="/about">JavaScript</a></li>
+                                <li><a href="/subjects/html">HTML</a></li>
+                                <li><a href="/subjects/css">CSS</a></li>
+                                <li><a href="/subjects/javascript">JavaScript</a></li>
                             </ul>
                         </nav>
                     </div>
