@@ -80,8 +80,8 @@ export default async function Page({params}) {
                         <p>Search our subjects</p>
                     </div>
                     <div className='subjects-search-results-inner grid'>
-                        {subjects.data.map((subject) => (
-                            <Subject data={subject} />
+                        {subjects.data.map((subject, index) => (
+                            <Subject data={subject} key={index}/>
                         ))}
                     </div>
                 </div>

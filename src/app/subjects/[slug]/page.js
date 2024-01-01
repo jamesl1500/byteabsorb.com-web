@@ -29,7 +29,7 @@ async function SubSubjectLessons(slug){
         <div className='lessons-content-inner'>
             <ul>
                 {lessons.map((lesson) => (
-                    <li>
+                    <li key={lesson.id}>
                         <a href={"/lessons/"+lesson.id}>
                             <h4>{lesson.attributes.lesson_name}</h4>
                             <p>{lesson.attributes.lesson_description}</p>
