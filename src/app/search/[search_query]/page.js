@@ -49,7 +49,7 @@ export default async function Page({params}) {
                     <h1>Search</h1>
                 </div>
                 <div className="page-header-description">
-                    <p>Lets find what you're looking for!</p>
+                    <p>Lets find what you are ooking for!</p>
                 </div>
             </div>
         </div>
