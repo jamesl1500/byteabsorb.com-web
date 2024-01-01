@@ -6,6 +6,9 @@
 import React from 'react';
 import { ReactDOM } from 'react';
 
+// Head
+import Head from 'next/head';
+
 // Markdown
 import ReactMarkdown from 'react-markdown'; 
 
@@ -55,65 +58,117 @@ export default async function Page({params}) {
         // Get subject lessons
         const subject_lessons = await getSubjectLessons(subject.subject_slug);
 
-        return (
-        <div className="page lesson-page">
-            <div className="page-header">
-                <div className="page-header-inner container-lg">
-                    <div className="page-header-title">
-                        <h1>{ lesson_name }</h1>
-                    </div>
-                    <div className="page-header-description">
-                        <p>{ lesson_description }</p>
-                    </div>
-                </div>
-            </div>
-            <div className="page page-breadcrumb">
-                <div className="page-breadcrumb-inner container-lg">
-                    <div className="page-breadcrumb-inner-left">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/subjects">Subjects</a></li>
-                            <li><a href={`/subjects/${subject.subject_slug}`}>{subject.subject_name}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div className="page-content container-lg">
-                <div className="page-content-inner row">
-                    {/* Left Navigation */}    
-                    <div className="left-column col-lg-3">
-                        <div className="left-column-inner">
-                            <div className="left-column-inner-title">
-                                <h3>Lessons</h3>
-                            </div>
-                            <div className="left-column-inner-content">
-                                <ul>
-                                    {subject_lessons.data[0].attributes.lessons.data.reverse().map((lesson) => {
-                                        if (lesson.id == data.data.id) {
-                                            return <li key={lesson.id} className="active"><a href={"/lessons/"+lesson.id}>{lesson.attributes.lesson_name}</a></li>
-                                        }else {
-                                            return <li key={lesson.id}><a href={"/lessons/"+lesson.id}>{lesson.attributes.lesson_name}</a></li>
-                                        }
-                                    })}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+        const next_lesson_id = data.data.id + 1;
+        const next_lesson_data = await getData(next_lesson_id);
 
-                    {/* Right Content */}
-                    <div className="right-column col-lg-9">
-                        <div className="right-column-inner">
-                            <div className="right-column-inner-content">
-                                {/* Lesson Content */}
-                                <ReactMarkdown>
-                                {lesson.lesson_content}
-                                </ReactMarkdown>
+        if(next_lesson_data.data == null){
+            var next_lesson = null;
+        }else{
+            var next_lesson = next_lesson_data.data;
+        }
+
+        const appendicies = lesson.appendices;
+
+        return (
+            <>
+            <Head>
+                <title>{lesson_name} | Codefreedom</title>
+            </Head>
+            <div className="page lesson-page">
+                <div className="page-header">
+                    <div className="page-header-inner container-lg">
+                        <div className="page-header-title">
+                            <h1>{ lesson_name }</h1>
+                        </div>
+                        <div className="page-header-description">
+                            <p>{ lesson_description }</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="page page-breadcrumb">
+                    <div className="page-breadcrumb-inner container-lg">
+                        <div className="page-breadcrumb-inner-left">
+                            <ul>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/subjects">Subjects</a></li>
+                                <li><a href={`/subjects/${subject.subject_slug}`}>{subject.subject_name}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div className="page-content container-lg">
+                    <div className="page-content-inner row">
+                        {/* Left Navigation */}    
+                        <div className="left-column col-lg-3">
+                            <div className="left-column-inner">
+                                <div className="left-column-inner-title">
+                                    <h3>Lessons</h3>
+                                </div>
+                                <div className="left-column-inner-content">
+                                    <ul>
+                                        {subject_lessons.data[0].attributes.lessons.data.reverse().map((lesson) => {
+                                            if (lesson.id == data.data.id) {
+                                                return <li key={lesson.id} className="active"><a href={"/lessons/"+lesson.id}>{lesson.attributes.lesson_name}</a></li>
+                                            }else {
+                                                return <li key={lesson.id}><a href={"/lessons/"+lesson.id}>{lesson.attributes.lesson_name}</a></li>
+                                            }
+                                        })}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Content */}
+                        <div className="right-column col-lg-9">
+                            <div className="right-column-inner">
+                                <div className="right-column-inner-content">
+                                    {/* Lesson Content */}
+                                    <ReactMarkdown>
+                                        {lesson.lesson_content}
+                                    </ReactMarkdown>
+                                    {/* Appendicies */}
+                                    {appendicies == null ? null :
+                                        <div className="appendicies">
+                                            <div className="appendicies-inner">
+                                                <div className="appendicies-inner-title">
+                                                    <h4>Appendix</h4>
+                                                </div>
+                                                <div className="appendicies-inner-content">
+                                                    <ul>
+                                                        {appendicies.data.map((appendix) => {
+                                                            return (
+                                                                <li key={appendix.id}>
+                                                                    <a href={"appendix/" + appendix.attributes.appendix_slug}>{appendix.attributes.appendix_name}</a>
+                                                                </li>
+                                                            )
+                                                        })}
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    {/* Next Lesson button */}
+                                    <div className="next-lesson">
+                                        {next_lesson == null ? null : 
+                                            <a href={"/lessons/"+next_lesson.id}>
+                                                <div className="next-lesson-inner">
+                                                    <div className="next-lesson-inner-title">
+                                                        <h3>Next Lesson:</h3>
+                                                    </div>
+                                                    <div className="next-lesson-inner-content">
+                                                        <h4>{next_lesson.attributes.lesson_name}</h4>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
         );
     }
 }

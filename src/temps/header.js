@@ -12,7 +12,7 @@ import Logo from '../assets/logos/codefreedom-logo-white-black-text.png';
 
 const header = () => {
     return (
-        <header className="header-main container-lg">
+        <header className="header-main">
             <div className="inner-header container">
                 <div className="header-row row">
                     <div className="header-branding col-3">
@@ -27,6 +27,7 @@ const header = () => {
                                 <li><a href="/subjects/html">HTML</a></li>
                                 <li><a href="/subjects/css">CSS</a></li>
                                 <li><a href="/subjects/javascript">JavaScript</a></li>
+                                <li><a href="/subjects/python">Python</a></li>
                             </ul>
                         </nav>
                     </div>

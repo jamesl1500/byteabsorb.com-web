@@ -35,8 +35,6 @@ export default async function Page() {
         // Navigate to 404 page
         notFound();
     }else{
-        console.log(data.data);
-
         return (
         <div className="page subjects-page">
             <div className="page-header">
@@ -55,10 +53,6 @@ export default async function Page() {
                         {/* Subjects */}
                         <div className="page-content-section page-content-lessons">
                             <div className="page-content-section-inner">
-                                <div className="page-content-section-title">
-                                    <h2>Subjects</h2>
-                                    <p>View all of our subjects</p>
-                                </div>
                                 <div className="page-content-section-list grid">
                                     {data.data.map((subject) => (
                                         <Subject data={subject} />

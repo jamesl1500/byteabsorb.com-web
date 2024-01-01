@@ -1,5 +1,6 @@
 // Poppins Font
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 // Bootstrap CSS
 @import 'https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css';
 
@@ -9,12 +10,52 @@
 $box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.15);
 $text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 
+$primary-color: #44b09e;
+$dark-primary-color: #3a8d82;
+
+/**
+* Global Styles
+*/
+
 *{
     font-family: 'Poppins', sans-serif;
 }
 
 body{
     background: #eee;
+    min-height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+/**
+* Button
+*/
+.btn{
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
+
+    &:hover{
+        transition: all .3s ease-in-out;
+        box-shadow: $box-shadow;
+    }
+}
+
+.btn-primary{
+    background: $primary-color;
+    border: 1px solid $primary-color;
+
+    &:hover{
+        background: $dark-primary-color;
+        border: 1px solid $dark-primary-color;
+    }
 }
 
 /**
@@ -24,9 +65,9 @@ body{
     padding: 5px;
     background: white;
 
-    background: #44b09e ;
+    background: #fff ;
 
-    height: 140px;
+    box-shadow: $box-shadow;
 
     border-radius: 5px;
 
@@ -38,19 +79,33 @@ body{
     .lesson-inner{
         padding: 20px;
 
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        
+        .lesson-inner-image{
+            text-align: left;
+            padding-right: 20px;
+
+            img{
+                width: 100px;
+                height: auto;
+            }
+        }
+
         .lesson-inner-title{
             padding-bottom: 20px;
 
             h5{
                 font-weight: 400;
                 font-size: .9em;
-                color: white;
+                color: #000;
             }
 
             h3{
-                font-weight: 400;
+                font-weight: 600;
                 font-size: 1.2em;
-                color: white;
+                color: #000;
             }
 
             a{
@@ -59,6 +114,10 @@ body{
                 top: 15px;
 
                 color: white;
+                background: $primary-color;
+                border: 1px solid $primary-color;
+                padding: 5px 10px;
+                border-radius: 5px;
             }
 
         }
@@ -74,7 +133,7 @@ body{
     .page-header{
         padding-top: 100px;
         background-color: #44b09e;
-        background-image: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%);
+        //background-image: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%);
         padding-bottom: 50px;
 
         height: 550px;
@@ -82,30 +141,44 @@ body{
         .page-header-inner{
             padding-top: 50px;
 
-            .page-header-image{
-                text-align: center;
+            .page-header-top{
+                display: flex;
+                justify-content: left;
+                align-items: left;
 
-                img{
-                    width: 120px;
-                    height: auto;
+                .page-header-image{
+                    text-align:center;
+                    width: 150px;
+
+                    img{
+                        width: 120px;
+                        height: auto;
+                    }
                 }
-            }
 
-            .page-header-title{
-                text-align: center;
-                padding-top: 30px;
-                
-                h1{
-                    color: white;
-                    font-weight: 600;
-                    font-size: 50px;
+                .page-header-title{
+                    text-align: left;
+                    
+                    h1{
+                        color: white;
+                        font-weight: 600;
+                        font-size: 50px;
 
-                    text-shadow: $text-shadow;
+                        text-shadow: $text-shadow;
+                    }
+
+                    p{
+                        color: white;
+                        font-weight: 300;
+                        font-size: 20px;
+
+                        text-shadow: $text-shadow;
+                    }
                 }
             }
 
             .page-header-description{
-                text-align: center;
+                text-align: left;
                 padding-top: 30px;
 
                 p{
@@ -217,7 +290,7 @@ body{
                         .page-content-section-list.grid{
                             // Grid
                             display: grid;
-                            grid-template-columns: repeat(4, 1fr);
+                            grid-template-columns: repeat(3, 1fr);
                             grid-gap: 20px;
                         }
                     }
@@ -231,17 +304,18 @@ body{
 * Header
 */
 .header-wrapper{
-    padding: 15px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    z-index: 9999;
 }
 
 .header-main{
     padding: 10px;
     background: white;
-    box-shadow: $box-shadow;
+    //box-shadow: $box-shadow;
+    border-bottom: 1px solid #eee;
 
     .inner-header{
 
@@ -321,6 +395,77 @@ body{
 /**
 * Footer
 */
+.footer{
+    background: #333;
+
+    .footer-inner{
+        padding: 20px;
+
+        .footer-top{
+            padding-top: 20px;
+
+            .footer-top-inner{
+
+                .footer-logo{
+                    text-align: left;
+
+                    img{
+                        width: 150px;
+                        height: auto;
+                        border-radius: 5px;
+                    }
+                }
+
+                .footer-navigation{
+                    text-align: left;
+                    padding-top: 20px;
+
+                    ul{
+                        padding: 0px;
+                        margin: 0px;
+
+                        display: flex;
+                        justify-content: left;
+
+                        li{
+                            display: block;
+
+                            padding-right: 20px;
+
+                            a{
+                                color: #fff;
+                                font-weight: 400;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+
+                }
+
+                .footer-top-row{
+                    padding-bottom: 20px;
+                }
+            }
+        }
+
+        .footer-bottom-copyright{
+            border-top: 1px solid #555;
+            padding-top: 20px;
+
+            p{
+                color: #fff;
+                font-weight: 400;
+                font-size: 15px;
+
+                a{
+                    color: #fff;
+                    font-weight: 600;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
 
 /**
 * Page: Lesson
@@ -331,7 +476,19 @@ body{
         min-height: 400px;
         height: auto;
 
-        padding-bottom: 100px;
+        padding-bottom: 150px;
+
+        .page-header-inner{
+
+            .page-header-title{
+
+                h1{
+                    font-weight: 400;
+                    font-size: 50px;
+                    color: #fff;
+                }
+            }
+        }
     }
 
     .page-content{
@@ -345,7 +502,7 @@ body{
                 .left-column-inner{
 
                     .left-column-inner-title{
-                        border-bottom: 1px solid #eee;
+                        border-bottom: 1px solid #aaa;
 
                         h3{
 
@@ -389,7 +546,7 @@ body{
             .right-column{
 
                 .right-column-inner{
-                    border-left: 1px solid #eee;
+                    border-left: 1px solid #aaa;
 
                     .right-column-inner-content{
                         padding: 30px;
@@ -399,6 +556,111 @@ body{
                             padding: 20px;
                             border-radius: 5px;
                             overflow: auto;
+                        }
+
+                        img{
+                            width: 100%;
+                            height: auto;
+                            border-radius: 5px;
+                            border: 1px solid #aaa;
+                        }
+
+                        ul{
+                            padding-left: 1.2rem;
+                        }
+
+                        li{
+                            padding-bottom: 15px;
+                        }
+
+                        .appendicies{
+                            padding-top: 20px;
+                            padding-bottom: 20px;
+                            border-bottom: 1px solid #aaa;
+
+                            .appendicies-inner{
+
+                                .appendicies-inner-title{
+
+                                    h3{
+
+                                    }
+                                }
+
+                                .appendicies-inner-content{
+                                    padding-top: 10px;
+
+                                    ul{
+                                        padding: 0px;
+                                        margin: 0px;
+
+                                        li{
+                                            padding: 10px 15px;
+                                            background: $primary-color;
+                                            display: inline-block;
+                                            list-style: none;
+                                            border-radius: 5px;
+
+                                            &:hover{
+                                                transition: all .3s ease;
+                                                background: $dark-primary-color;
+                                            }
+
+                                            a{
+                                                color: #fff;
+                                                font-weight: 500;
+                                                font-size: 15px;
+                                                text-decoration: none;
+                                            }
+                                        }
+
+                                        li.active{
+
+                                            a{
+                                                color: #000;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .next-lesson{
+                            padding-top: 20px;
+
+                            a{
+                                
+                                .next-lesson-inner{
+                                    background: $primary-color;
+                                    padding: 15px;
+                                    border-radius: 5px;
+
+                                    &:hover{
+                                        transition: all .3s ease;
+                                        background: $dark-primary-color;
+                                    }
+
+                                    .next-lesson-inner-title{
+
+                                        h3{
+                                            color: rgba(255,255,255,.8);
+                                            font-weight: 500;
+                                            font-size: 1.0em;
+                                        }
+                                    }
+
+                                    .next-lesson-inner-content{
+
+                                        h4{
+                                            color: white;
+                                            font-weight: 400;
+                                            font-size: 1.3em;
+                                            padding-bottom: 0px;
+                                            margin-bottom: 0px;
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -417,5 +679,532 @@ body{
         height: auto;
 
         padding-bottom: 100px;
+
+        .page-header-inner{
+
+            .page-header-title{
+
+                h1{
+                    font-weight: 500;
+                    font-size: 3em;
+                    color: white;
+                }
+            }
+
+            .page-header-description{
+                padding-top: 20px;
+
+                p{
+                    font-weight: 400;
+                    font-size: 1.2em;
+                }
+            }
+        }
+    }
+
+    .page-content{
+        padding: 15px;
+        background: transparent;
+        box-shadow: none;
+
+        .page-content-inner{
+
+            .page-content-row{
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                gap: 20px;
+
+                .page-content-sub-subjects{
+                    background: white;
+                    padding: 0px;
+                    box-shadow: $box-shadow;
+                    border-radius: 5px;
+
+                    width: 350px;
+
+                    .page-content-section-inner{
+
+                        .page-content-section-title{
+                            padding: 15px;
+                            border-bottom: 1px solid #eee;
+
+                            h2{
+                                font-weight:500;
+                                font-size: 1.2em;
+                            }
+
+                            p{
+                                font-weight: 400;
+                                font-size: .8em;
+                                color: #aaa;
+                                margin-bottom: 0px;
+                            }
+                        }
+
+                        .page-content-section-list{
+
+                            ul{
+                                padding: 0px;
+                                margin: 0px;
+
+                                li{
+                                    list-style: none;
+                                    padding: 10px 15px;
+
+
+                                    a{
+                                        color: #000;
+                                        font-weight: 500;
+                                        font-size: 15px;
+                                        text-decoration: none;
+                                    }
+                                }
+
+                                li:hover{
+                                    background: #eee;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .page-content-lessons{
+                    padding: 0px;
+                    border-radius: 5px;
+
+                    width: 100%;
+
+                    .page-content-section-inner{
+
+                        .lessons-content{
+                            background: white;
+                            margin-bottom: 20px;
+
+                            box-shadow: $box-shadow;
+                            border-radius: 5px;
+
+                            .page-content-section-title{
+                                padding: 15px;
+                                border-bottom: 1px solid #eee;
+
+                                h2{
+                                    font-weight:500;
+                                    font-size: 1.2em;
+                                }
+
+                                p{
+                                    font-weight: 400;
+                                    font-size: .8em;
+                                    color: #aaa;
+                                    margin-bottom: 0px;
+                                }
+
+                                
+                            }
+
+                            .page-content-section-list{
+
+                                .lessons-content-inner{
+
+                                    ul{
+                                        padding: 0px;
+                                        margin: 0px;
+
+                                        li{
+                                            list-style: none;
+                                            padding: 10px 15px;
+
+                                            a{
+
+                                                h4{
+                                                    color: #000;
+                                                    font-weight: 500;
+                                                    font-size: 15px;
+                                                    text-decoration: none;
+                                                }
+
+                                                p{
+                                                    color: #aaa;
+                                                    font-weight: 400;
+                                                    font-size: 12px;
+                                                    margin-bottom: 0px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+* Page: Home
+*/
+.page-home{
+
+    .page-header{
+        min-height: 400px;
+        height: auto;
+
+        padding-bottom: 100px;
+        background: white;
+
+        .page-header-inner{
+            background-size: cover;
+
+            .page-header-title{
+
+                h1{
+                    color: #000;
+                    font-weight: 500;
+                    font-size: 50px;
+                    text-align: left;
+
+                }
+            }
+
+            .page-header-description{
+                text-align: left;
+                padding-top: 30px;
+
+                p{
+                    color: #000;
+                    font-weight: 400;
+                    font-size: 20px;
+
+                }
+            }
+        }
+    }
+
+    .page-content{
+        position: relative;
+        top: 0px;
+
+        box-shadow: none;
+        border-radius: 0px;
+
+        .page-content-inner{
+            padding-bottom: 40px;
+
+            .page-content-inner-title{
+                padding-top: 30px;
+                padding-bottom: 30px;
+
+                h2{
+                    color: white;
+                    font-weight: 500;
+                    font-size: 30px;
+                    text-align: left;
+                }
+
+                p{
+                    color: white;
+                    font-weight: 400;
+                    font-size: 15px;
+                    text-align: left;
+                }
+            }
+
+            .page-content-inner-content{
+
+                .subject-items{
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 20px;
+
+                    .subject-item{
+                        background: white;
+                        border-radius: 5px;
+                        box-shadow: $box-shadow;
+
+                        padding: 20px;
+
+                        .subject-item-inner{
+                            text-align: center;
+
+                            .subject-item-inner-image{
+                                padding-bottom: 20px;
+
+                                img{
+                                    height: 100px;
+                                }
+                            }
+
+                            .subject-item-inner-title{
+                                padding-top: 20px;
+                                padding-bottom: 20px;
+
+                                h3{
+                                    color: #000;
+                                    font-weight: 600;
+                                    font-size: 20px;
+                                }
+                            }
+
+                            .subject-item-inner-description{
+                                padding-bottom: 20px;
+
+                                p{
+                                    color: #aaa;
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                }
+                            }
+
+                            .subject-item-inner-button{
+                                padding-bottom: 20px;
+
+                                a{
+                                    color: #000;
+                                    font-weight: 500;
+                                    font-size: 15px;
+                                    text-decoration: none;
+                                    padding: 5px;
+
+                                    &:hover{
+                                        border-bottom: 1px solid #333;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    
+    .page-content-subjects{
+        background: $primary-color;
+    }
+
+    .page-content-about{
+
+        .page-content-inner{
+            padding-bottom: 40px;
+
+            .page-content-inner-title{
+                padding-top: 30px;
+                padding-bottom: 30px;
+
+                h2{
+                    color: #000;
+                    font-weight: 500;
+                    font-size: 30px;
+                    text-align: left;
+                }
+
+                p{
+                    color: #000;
+                    font-weight: 400;
+                    font-size: 15px;
+                    text-align: left;
+                }
+            }
+
+            .page-content-inner-content{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                .page-content-inner-content-left{
+                    padding-right: 50px;
+
+                    .page-content-inner-content-left-image{
+                        padding-bottom: 20px;
+                        background-image: url('https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+                        width: 400px;
+                        height: 400px;
+
+                        background-size: cover;
+                        background-position: center;
+
+                        border-radius: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+* Page: Search
+*/
+.page-search{
+    
+    .page-header{
+        min-height: 400px;
+        height: auto;
+
+        padding-bottom: 100px;
+        background: $primary-color;
+
+        .page-header-inner{
+            background-size: cover;
+
+            .page-header-title{
+
+                h1{
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 50px;
+                    text-align: left;
+
+                }
+            }
+
+            .page-header-description{
+                text-align: left;
+                padding-top: 30px;
+
+                p{
+                    color: #fff;
+                    font-weight: 400;
+                    font-size: 20px;
+
+                }
+            }
+        }
+    }
+
+    .page-content{
+        background: transparent;
+        box-shadow: none;
+        
+        .page-content-inner{
+
+            .appendix-search-results{
+                background: white;
+                border-radius: 5px;
+                box-shadow: $box-shadow;
+                padding: 15px;
+
+                .appendix-search-results-title{
+                    border-bottom: 1px solid #aaa;
+
+                    h2{
+                        color: #000;
+                        font-weight: 500;
+                        font-size: 30px;
+                        text-align: left;
+                    }
+
+                    p{
+                        color: #000;
+                        font-weight: 400;
+                        font-size: 15px;
+                        text-align: left;
+                    }
+                }
+
+                .appendix-search-results-inner{
+
+                    ul{
+                        padding-top: 20px;
+                        padding-left: 0px;
+                        margin: 0px;
+
+                        li{
+                            padding: 10px 15px;
+                            background: $primary-color;
+                            display: inline-block;
+                            list-style: none;
+                            border-radius: 5px;
+
+                            &:hover{
+                                transition: all .3s ease;
+                                background: $dark-primary-color;
+                            }
+
+                            a{
+                                color: #fff;
+                                font-weight: 500;
+                                font-size: 15px;
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .subjects-search-results{
+                background: white;
+                border-radius: 5px;
+                box-shadow: $box-shadow;
+                padding: 15px;
+
+                margin-top: 20px;
+
+                .subjects-search-results-title{
+                    border-bottom: 1px solid #aaa;
+
+                    h2{
+                        color: #000;
+                        font-weight: 500;
+                        font-size: 30px;
+                        text-align: left;
+                    }
+
+                    p{
+                        color: #000;
+                        font-weight: 400;
+                        font-size: 15px;
+                        text-align: left;
+                    }
+                }
+
+                .subjects-search-results-inner{
+                    padding-top: 20px;
+
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 20px;
+
+                }
+            }
+
+            .lessons-search-results{
+                background: white;
+                border-radius: 5px;
+                box-shadow: $box-shadow;
+                padding: 15px;
+
+                margin-top: 20px;
+
+                .lessons-search-results-title{
+                    border-bottom: 1px solid #aaa;
+
+                    h2{
+                        color: #000;
+                        font-weight: 500;
+                        font-size: 30px;
+                        text-align: left;
+                    }
+
+                    p{
+                        color: #000;
+                        font-weight: 400;
+                        font-size: 15px;
+                        text-align: left;
+                    }
+                }
+
+                .lessons-search-results-inner{
+                    padding-top: 20px;
+
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-gap: 20px;
+
+                }
+            }
+        }
     }
 }
