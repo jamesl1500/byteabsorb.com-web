@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 // Import env variables
@@ -70,7 +71,7 @@ export default async function Page({params})
                         <div className='page-header-top'>
                             <div className="page-header-image">
                                 {/* Get image from data */}
-                                <img src={subject_image_url} alt="" />
+                                <img src={subject_image_url} alt={subject_name} />
                             </div>
                             <div className="page-header-title">
                                 <h1>{subject_name}</h1>

@@ -64,7 +64,7 @@ export default async function Page({params}) {
                     <div className='appendix-search-results-inner'>
                         <ul>
                             {appendicies.data.map((appendix) => (
-                                <li>
+                                <li key={appendix.id}>
                                     <a href={API_PUBLIC_URL + '/appendix/' + appendix.attributes.appendix_slug}>
                                         {appendix.attributes.appendix_name}
                                     </a>

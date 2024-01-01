@@ -54,8 +54,8 @@ export default async function Page() {
                         <div className="page-content-section page-content-lessons">
                             <div className="page-content-section-inner">
                                 <div className="page-content-section-list grid">
-                                    {data.data.map((subject) => (
-                                        <Subject data={subject} />
+                                    {data.data.map((subject, index) => (
+                                        <Subject data={subject} key={index}/>
                                     ))}
                                 </div>
                             </div>

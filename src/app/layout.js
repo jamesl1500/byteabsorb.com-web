@@ -2,6 +2,7 @@ import { APP_NAME, APP_DESCRIPTION } from "@/config/definitions"
 
 // Next
 import Head from "next/head"
+import Script from 'next/script'
 
 // Styles
 import "@/styles/style.scss"
@@ -43,8 +44,8 @@ export default function RootLayout({ children }) {
         </div>
 
         {/* Bootstrap cdn */}
-        <script src={metadata.bootstrap.jquery}></script>
-        <script src={metadata.bootstrap.js}></script>
+        <Script src={metadata.bootstrap.jquery}></Script>
+        <Script src={metadata.bootstrap.js}></Script>
       </body>
     </html>
   )

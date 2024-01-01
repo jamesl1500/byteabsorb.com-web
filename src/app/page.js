@@ -20,10 +20,10 @@ export default async function Page() {
         <div className="page-header-inner container-lg">
           <div className="page-header-left">
             <div className="page-header-title">
-              <h1>Welcome to Codefreedom</h1>
+              <h1>Welcome to Byteabsorb</h1>
             </div>
             <div className="page-header-description">
-              <p>Codefreedom is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code.</p>
+              <p>Byteabsorb is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code.</p>
             </div>
             <div className="page-header-actions">
               <a href="/subjects" className="btn btn-primary">View Subjects</a>
@@ -40,8 +40,8 @@ export default async function Page() {
           <div className="page-content-inner-content">
             {/* Subjects */}
             <div className='subject-items'>
-              {data.data.map((subject) => (
-                <div className="subject-item">
+              {data.data.map((subject, index) => (
+                <div className="subject-item" key={index}>
                   <div className="subject-item-inner">
                     <div className="subject-item-inner-image">
                       <img src={API_PUBLIC_URL + subject.attributes.subject_icon.data.attributes.url} alt="HTML" />
@@ -65,8 +65,8 @@ export default async function Page() {
       <div className="page-content page-content-about">
         <div className="page-content-inner container-lg">
           <div className="page-content-inner-title">
-            <h2>About Codefreedom</h2>
-            <p>Learn more about Codefreedom</p>
+            <h2>About Byteabsorb</h2>
+            <p>Learn more about Byteabsorb</p>
           </div>
           <div className="page-content-inner-content">
             <div className="page-content-inner-content-left">
@@ -75,10 +75,10 @@ export default async function Page() {
             </div>
             <div className="page-content-inner-content-right">
               <div className="page-content-inner-content-right-title">
-                <h3>What is Codefreedom?</h3>
-                <p>Codefreedom is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code.</p>
+                <h3>What is Byteabsorb?</h3>
+                <p>Byteabsorb is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code.</p>
 
-                <h3>Why use Codefreedom?</h3>
+                <h3>Why use Byteabsorb?</h3>
                 <p>With our easy to follow lessons, you can learn to code in no time. We have a wide range of subjects and lessons to help you learn to code.</p>
               </div>
             </div>
