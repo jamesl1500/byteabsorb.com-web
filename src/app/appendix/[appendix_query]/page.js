@@ -10,21 +10,23 @@ import { notFound } from 'next/navigation';
 import { API_URL } from '@/config/definitions';
 
 // Import components
-import Subject from '@/components/Subject';
+import ReactMarkdown from 'react-markdown'; 
 
 /**
- * Get all subjects
+ * Get appendix data
  */
-async function getSubjects(){
-    // Get All subjects from API
-    const res = await fetch(API_URL + '/subjects?populate=*');
+async function getAppendix(slug){
+    // Get lesson data
+    const res = await fetch(API_URL + '/appendices?populate=*&filters\[appendix_slug\]='+slug+'&filters\[status\]=published');
     const data = await res.json();
     return data;
 }
 
-export default async function Page() {
+export default async function Page({params}) {
     // Get subject data
-    const data = await getSubjects();
+    const data = await getAppendix(params.appendix_query);
+    const appendix = data.data[0].attributes;
+    console.log(appendix.lessons);
 
     // Make sure there are subjects
     if(data.data == null){
@@ -32,28 +34,44 @@ export default async function Page() {
         notFound();
     }else{
         return (
-        <div className="page subjects-page">
+        <div className="page page-appendix">
             <div className="page-header">
                 <div className="page-header-inner container-lg">
                     <div className="page-header-title">
-                        <h1>Subjects</h1>
+                        <h1>Appendix</h1>
                     </div>
                     <div className="page-header-description">
-                        <p>View all of our subjects here</p>
+                        <p>View appendices here</p>
                     </div>
                 </div>
             </div>
             <div className="page-content container-lg">
                 <div className="page-content-inner">
                     <div className="page-content-row">
-                        {/* Subjects */}
-                        <div className="page-content-section page-content-lessons">
-                            <div className="page-content-section-inner">
-                                <div className="page-content-section-list grid">
-                                    {data.data.map((subject, index) => (
-                                        <Subject data={subject} key={index}/>
-                                    ))}
-                                </div>
+                        {/* Appendices */}
+                        <div className='page-content-title'>
+                            <h2>{appendix.appendix_name}</h2>
+                            <p>{appendix.appendix_description}</p>
+                        </div>
+                        {appendix.appendix_content != null &&
+                            <div className='page-content-elaboration'>
+                                <h3>Elaboration</h3>
+                                <ReactMarkdown>
+                                    {appendix.appendix_content}
+                                </ReactMarkdown>
+                            </div>
+                        }
+                        <div className='page-content-related-lessons'>
+                            <h3>Related Lessons</h3>
+                            <div className='page-content-related-lessons-list'>
+                                {appendix.lessons.data.reverse().map((lesson, index) => (
+                                    <div className='page-content-related-lessons-list-item' key={index}>
+                                        <a href={'/lessons/'+lesson.id}>
+                                            <h3>{lesson.attributes.lesson_name} <span>Lesson</span></h3>
+                                            <p>{lesson.attributes.lesson_description}</p>
+                                        </a>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

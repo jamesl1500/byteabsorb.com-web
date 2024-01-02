@@ -78,6 +78,9 @@ export default async function Page({params}) {
                         <p>Search our appendix</p>
                     </div>
                     <div className='appendix-search-results-inner'>
+                        {appendicies.data.length == 0 &&
+                            <p>No results found</p>
+                        }
                         <ul>
                             {appendicies.data.map((appendix) => (
                                 <li key={appendix.id}>
@@ -96,6 +99,9 @@ export default async function Page({params}) {
                         <p>Search our subjects</p>
                     </div>
                     <div className='subjects-search-results-inner grid'>
+                        {subjects.data.length == 0 &&
+                            <p>No results found</p>
+                        }
                         {subjects.data.map((subject, index) => (
                             <Subject data={subject} key={index}/>
                         ))}
@@ -109,6 +115,9 @@ export default async function Page({params}) {
                     </div>
                     <div className='lessons-search-results-inner'>
                         <ul>
+                            {lessons.data.length == 0 &&
+                                <p>No results found</p>
+                            }
                             {lessons.data.map((lesson) => (
                                 <li key={lesson.id}>
                                     <a href={APP_URL + '/lessons/' + lesson.id}>

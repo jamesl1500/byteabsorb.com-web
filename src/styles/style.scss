@@ -1127,10 +1127,10 @@ a{
                 }
 
                 .appendix-search-results-inner{
+                    padding-top: 20px;
 
                     ul{
-                        padding-top: 20px;
-                        padding-left: 0px;
+                        padding: 0px;
                         margin: 0px;
 
                         li{
@@ -1404,6 +1404,104 @@ a{
         .page-content-inner{
 
             
+        }
+    }
+}
+
+/**
+* Page: Appendix
+*/
+.page-appendix{
+
+    .page-header{
+        min-height: 400px;
+        height: auto;
+
+        padding-bottom: 100px;
+        background: $primary-color;
+
+        .page-header-inner{
+            background-size: cover;
+
+            .page-header-title{
+
+                h1{
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 50px;
+                    text-align: left;
+
+                }
+            }
+
+            .page-header-description{
+                text-align: left;
+                padding-top: 30px;
+
+                p{
+                    color: #fff;
+                    font-weight: 400;
+                    font-size: 20px;
+
+                }
+            }
+        }
+    }
+
+    .page-content{
+        
+        .page-content-inner{
+
+            .page-content-row{
+
+                .page-content-title{
+                    border-bottom: 1px solid #aaa;
+                }
+
+                .page-content-elaboration{
+                    border-bottom: 1px solid #aaa;
+                    padding-top: 20px;
+                    padding-bottom: 20px;
+                }
+
+                .page-content-related-lessons{
+                    padding-top: 20px;
+
+                    .page-content-related-lessons-list{
+                        padding-top: 10px;
+
+                        .page-content-related-lessons-list-item{
+                            list-style: none;
+
+                            a{
+                                
+                                h3{
+                                    color: #000;
+                                    font-weight: 600;
+                                    font-size: 15px;
+                                    text-decoration: none;
+
+                                    span{
+                                        // Pill form for the lesson type
+                                        padding: 5px 10px;
+                                        background: $primary-color;
+                                        border-radius: 20px;
+                                        color: #fff;
+                                        font-size: 12px;
+                                    }
+                                }
+
+                                p{
+                                    color: #000;
+                                    font-weight: 400;
+                                    font-size: 15px;
+                                    text-align: left;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
