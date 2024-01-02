@@ -1,3 +1,5 @@
+"use client";
+
 /**
  * Header
  * @module temps/header
@@ -10,7 +12,19 @@ import Image from 'next/image';
 
 import Logo from '../assets/logos/codefreedom-logo-white-black-text.png';
 
+/**
+ * SearchSubmit function for search form
+ */
+
 const header = () => {
+    async function searchSubmit(event) {    
+        event.preventDefault();
+        
+        const formData = new FormData(event.target);
+        const search_query = formData.get('search_query');
+        window.location.href = '/search/'+search_query;
+    }
+
     return (
         <header className="header-main">
             <div className="inner-header container">
@@ -32,8 +46,8 @@ const header = () => {
                         </nav>
                     </div>
                     <div className="header-search col-3">
-                        <form action="/search" method="get">
-                            <input type="text" name="q" placeholder="Search..." autoComplete="none"/>
+                        <form action="/search" method="get" onSubmit={searchSubmit}>
+                            <input type="text" name="search_query" placeholder="Search..." autoComplete="none"/>
                         </form>
                     </div>
                 </div>

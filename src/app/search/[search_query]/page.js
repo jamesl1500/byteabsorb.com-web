@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Import env variables
-import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
+import { API_URL, APP_URL } from '@/config/definitions';
 
 // Import components
 import Subject from '@/components/Subject';
@@ -36,10 +36,26 @@ async function searchSubjects(query){
     return data;
 }
 
+/**
+ * SearchLessons
+ * ------------------
+ * Search api for lessons
+ * 
+ * @param {*} query
+ * @returns array
+ */
+async function searchLessons(query){
+    // Get All subjects from API
+    const res = await fetch(API_URL + '/lessons?filters\[lesson_name\][$contains]='+query+'&populate=*');
+    const data = await res.json();
+    return data;
+}
+
 export default async function Page({params}) {
   // Get subject data
   const appendicies = await searchAppendix(params.search_query);
   const subjects = await searchSubjects(params.search_query);
+  const lessons = await searchLessons(params.search_query);
 
   return (
     <div className="page page-search">
@@ -65,7 +81,7 @@ export default async function Page({params}) {
                         <ul>
                             {appendicies.data.map((appendix) => (
                                 <li key={appendix.id}>
-                                    <a href={API_PUBLIC_URL + '/appendix/' + appendix.attributes.appendix_slug}>
+                                    <a href={APP_URL + '/appendix/' + appendix.attributes.appendix_slug}>
                                         {appendix.attributes.appendix_name}
                                     </a>
                                 </li>
@@ -92,7 +108,16 @@ export default async function Page({params}) {
                         <p>Search our lessons</p>
                     </div>
                     <div className='lessons-search-results-inner'>
-
+                        <ul>
+                            {lessons.data.map((lesson) => (
+                                <li key={lesson.id}>
+                                    <a href={APP_URL + '/lessons/' + lesson.id}>
+                                        <h4>{lesson.attributes.lesson_name} <span>Lesson</span></h4>
+                                        <p>{lesson.attributes.lesson_description}</p>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>

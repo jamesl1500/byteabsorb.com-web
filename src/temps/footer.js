@@ -32,8 +32,13 @@ const footer = () => {
                     </div>
                 </div>
                 <div className="footer-bottom-copyright">
-                    <p>Codefreedom is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code. When using our website you agree to our <a href="">Terms of service</a> and <a href="">Privacy Policy</a></p>
-                    <p>&copy; <a href="https://lattentechnologies.com">Latten Technologies, LLC</a>. All rights reserved.</p>
+                    <ul>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/privacy_policy">Privacy Policy</a></li>
+                    </ul>
+                    <p>Byteabsorb is a free online resource for learning to code. We have a wide range of subjects and lessons to help you learn to code. When using our website you agree to our <a href="/terms">Terms of service</a> and <a href="/privacy_policy">Privacy Policy</a></p>
+                    <p>&copy; A <a href="https://lattentechnologies.com">Latten Technologies, LLC</a> project. All rights reserved.</p>
                 </div>
             </div>
         </footer>
