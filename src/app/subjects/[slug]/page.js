@@ -96,7 +96,7 @@ export default async function Page({params})
                                     <div className="page-content-section-list">
                                         {/* Loop through subjects */}
                                         <ul>
-                                        {subject_sub_subjects.data.map((sub_subject, index) => (
+                                        {subject_sub_subjects.data.reverse().map((sub_subject, index) => (
                                             <li key={index}>
                                                 <a href={'/subjects/'+ subject_slug +'#'+sub_subject.attributes.sub_subject_slug}>
                                                     {sub_subject.attributes.sub_subject_name}
