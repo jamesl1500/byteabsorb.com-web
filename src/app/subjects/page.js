@@ -3,15 +3,11 @@
  * 
  */
 import React from 'react';
-import { ReactDOM } from 'react';
-
-// Markdown
-import ReactMarkdown from 'react-markdown';
 
 import { notFound } from 'next/navigation';
 
 // Import env variables
-import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
+import { API_URL } from '@/config/definitions';
 
 // Import components
 import Subject from '@/components/Subject';
@@ -21,7 +17,7 @@ import Subject from '@/components/Subject';
  */
 async function getSubjects(){
     // Get All subjects from API
-    const res = await fetch(API_URL + '/subjects?populate=*');
+    const res = await fetch(API_URL + '/subjects?populate=*', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }

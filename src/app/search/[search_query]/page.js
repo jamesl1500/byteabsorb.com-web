@@ -16,7 +16,7 @@ import Subject from '@/components/Subject';
  */
 async function searchAppendix(query){
     // Get All subjects from API
-    const res = await fetch(API_URL + '/appendices?filters\[appendix_name\][$contains]='+query+'&populate=*');
+    const res = await fetch(API_URL + '/appendices?filters\[appendix_name\][$contains]='+query+'&populate=*', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }
@@ -31,7 +31,7 @@ async function searchAppendix(query){
  */
 async function searchSubjects(query){
     // Get All subjects from API
-    const res = await fetch(API_URL + '/subjects?filters\[subject_name\][$contains]='+query+'&populate=*');
+    const res = await fetch(API_URL + '/subjects?filters\[subject_name\][$contains]='+query+'&populate=*', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }
@@ -46,7 +46,7 @@ async function searchSubjects(query){
  */
 async function searchLessons(query){
     // Get All subjects from API
-    const res = await fetch(API_URL + '/lessons?filters\[lesson_name\][$contains]='+query+'&populate=*');
+    const res = await fetch(API_URL + '/lessons?filters\[lesson_name\][$contains]='+query+'&populate=*', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }

@@ -4,7 +4,6 @@
  */
 
 import React from 'react';
-import { ReactDOM } from 'react';
 
 // Head
 import Head from 'next/head';
@@ -15,14 +14,14 @@ import ReactMarkdown from 'react-markdown';
 import { notFound } from 'next/navigation';
 
 // Import env variables
-import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
+import { API_URL } from '@/config/definitions';
 
 /**
  * Get lesson data from API
  */
 async function getData(id){
     // Get lesson data
-    const res = await fetch(API_URL + '/lessons/' + id + '?populate=*');
+    const res = await fetch(API_URL + '/lessons/' + id + '?populate=*', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }
@@ -33,7 +32,7 @@ async function getData(id){
  */
 async function getSubjectLessons(slug){
     // Get lesson data
-    const res = await fetch(API_URL + '/subjects?populate=*&filters\[subject_slug\]='+slug+'&filters\[status\]=published');
+    const res = await fetch(API_URL + '/subjects?populate=*&filters\[subject_slug\]='+slug+'&filters\[status\]=published', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }

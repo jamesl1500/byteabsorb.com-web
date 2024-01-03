@@ -1,8 +1,6 @@
 import React from 'react';
 
-import { redirect } from 'next/navigation';
-
-import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
+import { API_PUBLIC_URL } from '@/config/definitions';
 
 import Image from 'next/image';
 

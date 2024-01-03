@@ -4,10 +4,6 @@
  */
 import React from 'react';
 
-import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
-
-import { notFound } from 'next/navigation';
-
 export default async function Page() 
 {
 

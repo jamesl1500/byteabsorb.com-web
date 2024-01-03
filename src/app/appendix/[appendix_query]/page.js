@@ -17,7 +17,7 @@ import ReactMarkdown from 'react-markdown';
  */
 async function getAppendix(slug){
     // Get lesson data
-    const res = await fetch(API_URL + '/appendices?populate=*&filters\[appendix_slug\]='+slug+'&filters\[status\]=published');
+    const res = await fetch(API_URL + '/appendices?populate=*&filters\[appendix_slug\]='+slug+'&filters\[status\]=published', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }

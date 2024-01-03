@@ -8,14 +8,14 @@ import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
 import Lesson from '@/components/Lesson';
 
 async function getData(slug){
-    const res = await fetch(API_URL + '/subjects?populate=*&filters\[subject_slug\]='+slug+'&filters\[status\]=published');
+    const res = await fetch(API_URL + '/subjects?populate=*&filters\[subject_slug\]='+slug+'&filters\[status\]=published', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }
 
 async function getSubSubjectLessons(slug){
     // Get lesson data
-    const res = await fetch(API_URL + '/sub-subjects?populate=*&filters\[sub_subject_slug\]='+slug+'&filters\[status\]=published');
+    const res = await fetch(API_URL + '/sub-subjects?populate=*&filters\[sub_subject_slug\]='+slug+'&filters\[status\]=published', { cache: 'no-store' });
     const data = await res.json();
     return data;
 }

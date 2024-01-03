@@ -5,7 +5,7 @@ import { API_URL, API_PUBLIC_URL } from '@/config/definitions';
 
 async function getSubjects(){
   // Get All subjects from API
-  const res = await fetch(API_URL + '/subjects?populate=*');
+  const res = await fetch(API_URL + '/subjects?populate=*', { cache: 'no-store' });
   const data = await res.json();
   return data;
 }
