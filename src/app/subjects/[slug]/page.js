@@ -112,7 +112,7 @@ export default async function Page({params})
                             <div className="page-content-section page-content-lessons">
                                 <div className="page-content-section-inner">
                                     { /* Loop through sub subjects */ }
-                                    {subject_sub_subjects.data.reverse().map((sub_subject, index) => (
+                                    {subject_sub_subjects.data.map((sub_subject, index) => (
                                         <div className='lessons-content' key={index} id={sub_subject.attributes.sub_subject_slug}>
                                             <div className="page-content-section-title">
                                                 <h2 id={sub_subject.attributes.sub_subject_slug}>{sub_subject.attributes.sub_subject_name}</h2>
